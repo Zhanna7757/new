@@ -1,0 +1,11 @@
+<table border="1">
+{{#goods}}
+<tr>
+<td>{{name}}</td>
+<td>{{price}}руб.</td>
+	{{#deff}}осталось мало!{{/deff}}
+	{{^deff}}есть в наличии{{/deff}}
+</td>
+</tr>
+{{/goods}}
+</table>
