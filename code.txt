@@ -1,0 +1,56 @@
+console.clear();
+let iterable = {
+	[Symbol.iterator](n = 10) {
+		let i = 0;
+		return {
+			value: i,
+			done: false,
+			next: function () {
+				if (i < n) {
+					return { value: i++, done: false };
+				}
+				return { value: undefined, done: true };
+			}
+		};
+	}
+};
+
+//for (let j in iterable) {
+//console.log(j);
+//}
+
+//[].join.applay(iterable){
+//console.log(j)
+//}
+
+//let strJoined = [].toStr
+//let iter = iterable.generator();
+//console.log(iterable.generator());
+
+let students = [{ name: "Vasya" }, { name: "Masha" }, { name: "Peter" }];
+
+class Students {
+	constructor(items) {
+		this.users = items;
+	}
+
+	[Symbol.iterator]() {
+		let i = 0;
+		let users = this.users;
+		return {
+			next() {
+				if (i < users.length) {
+					return { value: users[i], done: false };
+				}
+				return { value: undefined, done: true };
+			}
+		};
+	}
+}
+
+let studentsClass = new Students(students);
+console.log(studentsClass);
+
+for (let user of studentsClass) {
+	console.log(user.name);
+}
