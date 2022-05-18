@@ -4,48 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+    <title>Game</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div class="goods"></div>
-    <script>
-      let cart = {
-        goods: [
-          { name: "Хлеб", price: 30, deff: false },
-          { name: "Молоко", price: 50, deff: false },
-          { name: "Яйца", price: 70, deff: false },
-          { name: "Бананы", price: 95, deff: false },
-          { name: "Сахар", price: 75, deff: true },
-        ],
-      };
-
-      let cartTemplate = `<table border="1">
-      {{#goods}}
-      <tr>
-      <td>{{name}}</td>
-      <td>{{price}}руб.</td>
-      	{{#deff}}осталось мало!{{/deff}}
-      	{{^deff}}есть в наличии{{/deff}}
-      </td>
-      </tr>
-      {{/goods}}
-      </table>`;
-
-      async function loadPart(name) {
-        let path = `/use_mustache/views/${name}.mustache`;
-        let responce = await fetch(path);
-        let text = await responce.text();
-        return text;
-      }
-
-      //let tpl= loadPart("goods");
-      //console.log(tpl)
-
-      document.querySelector(".goods").innerHTML = Mustache.render(
-        cartTemplate,
-        cart
-      );
-    </script>
+    <div class="playground">
+      <div class="player"></div>
+      <div class="comai"></div>
+      <div class="net"></div>
+      <div class="score playrScore">0</div>
+      <div class="score comaiScore">0</div>
+      <div class="ball"></div>
+    </div>
+    <script src="./script.js"></script>
   </body>
 </html>
